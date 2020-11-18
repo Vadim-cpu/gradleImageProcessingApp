@@ -11,7 +11,7 @@ import com.twelvemonkeys.image.ResampleOp;
 
 public class Application {
 
-	public static void main(String[] args) throws InterruptedException, IOException {
+	public static boolean main(String[] args) throws InterruptedException, IOException {
 		
 		System.out.println("Starting");
 		
@@ -21,9 +21,13 @@ public class Application {
 			if (!rootDir.isDirectory() || !rootDir.exists()) {
 				System.err.println("it hasn't DIRectory " );
 			}
-			
-			
-			
+			boolean accept(File pathname ) {
+			String path = pathname.getPath();
+			if (pathname.isDirectory() ||
+					(!path.contains(".jpeg") && !path.contains(".jpg"))) {
+				return false;
+			}
+			}
 			
 			//watch loop
 			File[] lastFile = {};
